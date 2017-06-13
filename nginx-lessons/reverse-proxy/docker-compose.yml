@@ -1,0 +1,14 @@
+proxy:
+  image: nginx
+  volumes:
+    - ./conf/proxy/conf.d:/etc/nginx/conf.d/
+  links:
+    - web:web
+  ports:
+    - "80:80"
+web:
+  image: nginx
+  volumes:
+    - ./conf/web/conf.d/:/etc/nginx/conf.d/
+    - ./conf/web/www:/var/www/example
+    
